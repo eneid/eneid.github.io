@@ -7,9 +7,9 @@
 </head>
 <body>
     <header>
-        <section id="headerContent" class="wrap">
+        <section id="headerContent" class="wrap" ng-controller="HeaderController">
             <h1><a href=".">Eneid</a></h1>
-            <button ng-click="disconnect()" class="right">DECONNEXION</button>
+            <button ng-class="{'logged': isLogged()}" ng-click="disconnect()" class="disconnect right">DECONNEXION</button>
         </section>
     </header>
     <div id="contentWrapper">

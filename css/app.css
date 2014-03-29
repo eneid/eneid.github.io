@@ -99,6 +99,9 @@ button:hover {
     background-color:#e18400;
 }
 
+button.disconnect { display:none}
+button.disconnect.logged { display:block}
+
 /******************** CONTENT *********************/
 #contentWrapper {
     padding-top:20px;

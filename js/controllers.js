@@ -14,11 +14,17 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
     };
 
     $scope.update();
+});
 
+myApp.controller('HeaderController', function($scope, $cookies, $location) {
     $scope.disconnect = function () {
         $cookies.token = null;
         $location.path("/auth");
     };
+
+    $scope.isLogged = function() {
+        return $cookies.token !== "null";
+    }
 });
 
 myApp.controller('AuthController', function ($http, $scope, $cookies, $base64, $location) {
