@@ -4,6 +4,6 @@
   <li ng-repeat="message in messages">
     {{ message.author.name }} {{ message.author.firstname }} ({{ message.author.email }})<br>
     {{ message.content }}<br>
-    {{ message.timestamp | date:'yyyy-MM-dd HH:mm:ss Z' }}
+    {{ message.timestamp | date:'dd/MM/yyyy HH:mm'}}
   </li>
 </ul>
