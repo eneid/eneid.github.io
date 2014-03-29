@@ -1,11 +1,7 @@
+<h1>Eneib</h1></h1>
 <form ng-submit="auth(email, password)">
-    <label for="email">email</label>
-    <input type="text" id="email" ng-model="email"/><br>
-
-    <label for="password">password</label>
-    <input type="password" id="password" ng-model="password"/><br>
-
-    <input type="submit"/>
+    <input type="text" id="email" ng-model="email" placeholder="Adresse email"/><br>
+    <input type="password"  placeholder="Mot de passe" id="password" ng-model="password"/><br>
+    <input type="submit" value="CONNEXION"/>
 </form>
-
-<button ng-click="subscribe()">Subscribe</button>
+<a ng-click="subscribe()" class="createAccount">Créer un compte</a>

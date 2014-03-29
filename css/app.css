@@ -145,7 +145,66 @@ button.disconnect.logged { display:block}
 
 
 
-
+/******************** Styles spécifiques Page de connexion *********************/
+body.auth {
+    background-color:#ee8d03;
+}
+.auth #contentWrapper {
+    margin-top:11%;
+}
+.auth h1 {
+    background:url(/img/logo-eneid-tall.png) top left no-repeat;
+    width:249px;
+    height:97px;
+    text-indent:-9999px;
+    margin:0 auto 50px auto;
+}
+.auth #content {
+    text-align:center;
+}
+.auth form {
+    margin-bottom:10px;
+}
+.auth #content [type='text'] {
+    background:#fff url(/img/user-icon.png) 7px 50% no-repeat;
+}
+.auth #content [type='password'] {
+    background:#fff url(/img/keylock-icon.png) 7px 50% no-repeat;
+}
+.auth #content [type='text'],
+.auth #content [type='password']{
+    border:0;
+    width:230px;
+    padding:10px 10px 10px 35px;
+    border-radius:5px;
+    margin-bottom:15px;
+    background-size:auto;
+}
+.auth #content input[type='submit'] {
+    border:0;
+    color:#fff;
+    padding:12px 10px 10px 10px;
+    width:270px;
+    background-color:#c87602;
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 2px 0px 0 rgba(0,0,0,0.3);
+    border-radius:5px;
+    -webkit-transition: background 200ms ease-out;
+    -moz-transition: background 200ms ease-out;
+    -ms-transition: background 200ms ease-out;
+    -o-transition: background 200ms ease-out;
+    transition: background 200ms ease-out;
+}
+.auth #content input[type='submit']:hover {
+    background-color:#e18400;
+    cursor:pointer;
+}
+.auth .createAccount {
+    color:#fff;
+    text-decoration:underline;
+    font-size:14px;
+    clear:left;
+}
 
 
 
