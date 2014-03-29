@@ -6,7 +6,19 @@
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
-  <div ng-view></div>
+    <header>
+        <section id="headerContent" class="wrap">
+            <h1>Eneid</h1>
+        </section>
+    </header>
+    <div id="contentWrapper">
+        <section id="content" class="wrap">
+            <div ng-view></div>
+        </section>
+        <section id="message">
+       </section>
+    </div>
+    <footer></footer>
   <script src="lib/angular.js"></script>
   <script src="lib/angular-route.js"></script>
   <script src="lib/md5.js"></script>

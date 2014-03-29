@@ -7,6 +7,7 @@ myApp.factory('Message', ['$resource', function ($resource) {
 myApp.controller('TimeLineController', function ($scope, $timeout, Message, $cookies, $location) {
     $scope.currentTimeline = 0;
 
+<<<<<<< HEAD
     $scope.update = function () {
         $scope.messages = Message.query();
         $scope.currentTimeline = $scope.currentTimeline + 1;
@@ -28,3 +29,14 @@ myApp.controller('AuthController', function ($http, $scope, $cookies, $base64, $
         $location.path("/timeline");
     };
 });
+=======
+        $scope.update = function() {
+            $http.get('timeline' + $scope.currentTimeline % 2 + '.json').success(function (data) {
+                $scope.messages = data;
+                $scope.currentTimeline = $scope.currentTimeline + 1;
+                $timeout($scope.update, 10000);
+            });
+        };
+        $scope.update();
+    }]);
+>>>>>>> Webdesign part

@@ -1,30 +1,113 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-.menu:before {
-  content: "[";
+
+
+body {
+    background-color:#efebe8;
+    font-family: arial;
+}
+.wrap {
+    width:960px;
+    margin:0 auto;
+}
+/********************* HEADER ********************/
+header {
+    background-color:#ee8d03;
+    padding-top:12px;
+    padding-bottom:12px;
+}
+h1 {
+    background:url(/img/logo-eneid.png) top left no-repeat;
+    height:42px;
+    width:109px;
+    text-indent:-9999px;
 }
 
-.menu:after {
-  content: "]";
+/******************** CONTENT *********************/
+#contentWrapper {
+    padding-top:20px;
+}
+#contentWrapper h2 {
+    font-size:1.4em;
+    font-weight:bold;
+    margin-top:5px;
+    margin-bottom:9px;
+}
+#contentWrapper ul li {
+    background-color:#ffffff;
+    padding:10px 16px;
+    margin-bottom:15px;
+    overflow:hidden;
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
+    border-top:5px solid #ee8d03;
+}
+#contentWrapper ul li img {
+    float:left;
+    display:block;
+    margin-right:16px;
+}
+#contentWrapper ul li .hour {
+    background:url(/img/icon-clock.png) top left no-repeat;
+    background-size:contain;
+    font-size:1em;
+    padding-left:25px;
+    color:#d9d9d9;
+}
+#contentWrapper ul li .msg {
+    clear:left;
+    font-size:1.1em;
+    line-height:1.3em;
+    color:#333;
+    padding-top:7px;
+    padding-bottom:3px;
 }
 
-.menu > li {
-  display: inline;
-}
 
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
 
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
-}
