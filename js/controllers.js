@@ -16,7 +16,7 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
     $scope.update();
 });
 
-myApp.controller('HeaderController', function($scope, $cookies, $location) {
+myApp.controller('LoggedController', function($scope, $cookies, $location) {
     $scope.disconnect = function () {
         $cookies.token = null;
         $location.path("/auth");

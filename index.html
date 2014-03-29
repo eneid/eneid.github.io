@@ -5,9 +5,9 @@
   <title>Willkommen</title>
   <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body>
-    <header>
-        <section id="headerContent" class="wrap" ng-controller="HeaderController">
+<body ng-class="{'logged': isLogged()}" ng-controller="LoggedController">
+    <header ng-show="isLogged()">
+        <section id="headerContent" class="wrap">
             <h1><a href=".">Eneid</a></h1>
             <button ng-class="{'logged': isLogged()}" ng-click="disconnect()" class="disconnect right">DECONNEXION</button>
         </section>
@@ -19,7 +19,7 @@
         <section id="message">
        </section>
     </div>
-    <footer></footer>
+    <footer ng-show="isLogged()"></footer>
   <script src="lib/angular.js"></script>
   <script src="lib/angular-route.js"></script>
   <script src="lib/md5.js"></script>
