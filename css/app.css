@@ -56,17 +56,47 @@ body {
     width:960px;
     margin:0 auto;
 }
+.left {
+    float:left;
+}
+.right {
+    float:right;
+}
 /********************* HEADER ********************/
 header {
     background-color:#ee8d03;
     padding-top:12px;
     padding-bottom:12px;
+    /*overflow:hidden;*/
 }
-h1 {
+header h1 {
+    display:inline-block;
+}
+header h1 a {
     background:url(/img/logo-eneid.png) top left no-repeat;
     height:42px;
     width:109px;
     text-indent:-9999px;
+    display:block;
+}
+header button {
+    background-color:#c87602;
+    color:#fff;
+    border:0;
+    padding:8px 10px 7px 10px;
+    margin-top:5px;
+    cursor:pointer;
+    border-radius:3px;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+    -webkit-transition: background 200ms ease-out;
+    -moz-transition: background 200ms ease-out;
+    -ms-transition: background 200ms ease-out;
+    -o-transition: background 200ms ease-out;
+    transition: background 200ms ease-out;
+}
+button:hover {
+    background-color:#e18400;
 }
 
 /******************** CONTENT *********************/
@@ -110,4 +140,21 @@ h1 {
 }
 
 
+
+
+
+
+
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { ... }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { ... }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { ... }
 
