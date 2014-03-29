@@ -24,6 +24,10 @@ myApp.controller('LoggedController', function($scope, $cookies, $location) {
 
     $scope.isLogged = function() {
         return $cookies.token !== "null";
+    };
+
+    $scope.cssClasspath = function() {
+        return $location.path();
     }
 });
 
