@@ -2,7 +2,8 @@
 
 <ul>
   <li ng-repeat="message in messages">
-    {{ message.author.name }} {{ message.author.firstname }} ({{ message.author.email }})<br>
+    <img gravatar-src="'{{ message.author.email }}'" gravatar-size="100" style="border-radius: 50px;">
+    {{ message.author.name }} {{ message.author.firstname }}<br>
     {{ message.content }}<br>
     {{ message.timestamp | date:'dd/MM/yyyy HH:mm'}}
   </li>
