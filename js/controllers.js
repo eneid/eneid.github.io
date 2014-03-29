@@ -10,9 +10,8 @@ angular.module('myApp.controllers', [])
             $http.get('timeline' + $scope.currentTimeline % 2 + '.json').success(function (data) {
                 $scope.messages = data;
                 $scope.currentTimeline = $scope.currentTimeline + 1;
-                $timeout($scope.update, 60000);
+                $timeout($scope.update, 5000);
             });
         };
-
         $scope.update();
     }]);

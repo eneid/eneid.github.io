@@ -6,7 +6,7 @@
             "firstname": "Sébastian"
         },
         "content": "Bonjour à tous",
-        "timestamp": 1234567890
+        "timestamp": 1234567890000
     },
     {
         "author": {
@@ -15,6 +15,6 @@
             "firstname": "Thibaut"
         },
         "content": "Bienvenue Sébastian",
-        "timestamp": 1234577890
+        "timestamp": 1234577890000
     }
 ]
