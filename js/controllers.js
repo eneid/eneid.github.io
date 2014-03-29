@@ -3,6 +3,9 @@
 myApp.factory('Message', ['$resource', function ($resource) {
     return $resource('http://eneid-api.herokuapp.com/api/timeline');
 }]);
+myApp.factory('User', ['$resource', function ($resource) {
+    return $resource('http://eneid-api.herokuapp.com/api/users/');
+}]);
 
 myApp.controller('TimeLineController', function ($scope, $timeout, Message, $cookies, $route) {
     $scope.currentTimeline = 0;
@@ -22,17 +25,17 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
     }
 });
 
-myApp.controller('LoggedController', function($scope, $cookies, $location) {
+myApp.controller('LoggedController', function ($scope, $cookies, $location) {
     $scope.disconnect = function () {
         $cookies.token = null;
         $location.path("/auth");
     };
 
-    $scope.isLogged = function() {
+    $scope.isLogged = function () {
         return $cookies.token !== "null";
     };
 
-    $scope.cssClasspath = function() {
+    $scope.cssClasspath = function () {
         return $location.path().substring(1);
     }
 });
@@ -44,13 +47,19 @@ myApp.controller('AuthController', function ($http, $scope, $cookies, $base64, $
         $location.path("/timeline");
     };
 
-    $scope.subscribe = function(){
+    $scope.subscribe = function () {
         $location.path("/subscribe");
     }
 });
 
-myApp.controller('SubscribeController', function ($http, $scope, $cookies, $base64, $location) {
-    $scope.subscribe = function(firstname, lastname, gender){
-        console.log("TODO ", firstname, lastname, gender);
+myApp.controller('SubscribeController', function ($http, $scope, User, $cookies, $base64, $location) {
+    $scope.subscribe = function (email, password, name, firstName) {
+        console.log(email, password, name, firstName);
+        var user = new User({ "email": email, "password": password, "name": name, "firstName": firstName });
+        user.$save();
+        console.log(user);
+        $cookies.token = $base64.encode(email + ":" + password);
+        $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
+        $location.path("/timeline");
     };
 });

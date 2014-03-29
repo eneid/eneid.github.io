@@ -1,17 +1,19 @@
-<form ng-submit="subscribe(firstname, lastname, gender)">
+<form ng-submit="subscribe(email, password, name, firstName)">
     <div>
-        <label for="firstname">First Name :</label>
-        <input id="firstname"  ng-model="firstname">
+        <label for="firstName">First Name :</label>
+        <input id="firstName" ng-model="firstName">
     </div>
     <div>
-        <label for="lastname">First Name :</label>
-        <input id="lastname" ng-model="lastname">
+        <label for="name">Name :</label>
+        <input id="name" ng-model="name">
     </div>
     <div>
-        <label for="woman">Woman :</label>
-        <input type="radio" id="woman" ng-model="gender" name="gender" value="woman">
-        <label for="man">Man :</label>
-        <input type="radio" id="man" ng-model="gender" name="gender" value="man">
+        <label for="email">Email :</label>
+        <input id="email" ng-model="email" type="email">
+    </div>
+    <div>
+        <label for="password">Password :</label>
+        <input id="password" ng-model="password" type="password">
     </div>
 
     <input type="submit"/>
