@@ -6,5 +6,6 @@ var myApp = angular.module('myApp', ['ngRoute', 'ui.gravatar', 'ngResource', 'ba
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/auth', {templateUrl: 'partials/auth.html', controller: 'AuthController'});
         $routeProvider.when('/timeline', {templateUrl: 'partials/timeline.html', controller: 'TimeLineController'});
+        $routeProvider.when('/subscribe', {templateUrl: 'partials/subscribe.html', controller: 'SubscribeController'});
         $routeProvider.otherwise({redirectTo: '/auth'});
     }]);

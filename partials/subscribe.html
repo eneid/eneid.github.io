@@ -1,0 +1,18 @@
+<form ng-submit="subscribe(firstname, lastname, gender)">
+    <div>
+        <label for="firstname">First Name :</label>
+        <input id="firstname"  ng-model="firstname">
+    </div>
+    <div>
+        <label for="lastname">First Name :</label>
+        <input id="lastname" ng-model="lastname">
+    </div>
+    <div>
+        <label for="woman">Woman :</label>
+        <input type="radio" id="woman" ng-model="gender" name="gender" value="woman">
+        <label for="man">Man :</label>
+        <input type="radio" id="man" ng-model="gender" name="gender" value="man">
+    </div>
+
+    <input type="submit"/>
+</form>
