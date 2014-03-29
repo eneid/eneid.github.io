@@ -27,7 +27,7 @@ myApp.controller('LoggedController', function($scope, $cookies, $location) {
     };
 
     $scope.cssClasspath = function() {
-        return $location.path();
+        return $location.path().substring(1);
     }
 });
 
