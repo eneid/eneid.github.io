@@ -3,6 +3,6 @@
     <img gravatar-src="'{{ message.author.email }}'" gravatar-size="60" style="border-radius: 50px;">
     <h2>{{ message.author.name }} {{ message.author.firstname }}</h2>
     <span class="hour">{{ message.timestamp | date:'dd/MM/yyyy HH:mm'}}</span>
-    <p class="msg">{{ message.content }}</p>
+    <p class="msg">{{ message.contents }}</p>
   </li>
 </ul>

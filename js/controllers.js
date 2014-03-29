@@ -1,7 +1,7 @@
 'use strict';
 
 myApp.factory('Message', ['$resource', function ($resource) {
-    return $resource('http://eneid-api.herokuapp.com/api/timeline');
+    return $resource('http://localhost:8080/api/timeline');
 }]);
 
 myApp.controller('TimeLineController', function ($scope, $timeout, Message, $cookies, $location) {
@@ -14,6 +14,11 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
     };
 
     $scope.update();
+
+    $scope.sendMessage = function() {
+        new Message({contents: $scope.content}).$save();
+        $location.path("/timeline");
+    }
 });
 
 myApp.controller('LoggedController', function($scope, $cookies, $location) {

@@ -16,7 +16,13 @@
         <section id="content" class="wrap">
             <div ng-view></div>
         </section>
-        <section id="message">
+        <section id="message" ng-controller="TimeLineController" ng-show="isLogged()">
+            <form ng-submit="sendMessage()">
+                <label for="content">contents</label>
+                <textarea id="content" ng-model="content" placeholder="Saisissez votre message"></textarea>
+
+                <input type="submit" />
+            </form>
        </section>
     </div>
     <footer ng-show="isLogged()"></footer>

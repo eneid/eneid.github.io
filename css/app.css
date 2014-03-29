@@ -161,3 +161,15 @@ button.disconnect.logged { display:block}
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) { ... }
 
+
+
+#message {
+    position:fixed;
+    bottom:0;
+    padding:5px;
+    border-top:5px solid pink;
+    width:100%;
+    background-color: darkred;
+    text-align: center;
+}
+
