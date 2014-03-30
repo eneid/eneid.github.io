@@ -258,7 +258,9 @@ body.subscribe{
 }
 
 .auth #content input[type='submit'],
-.subscribe #content input[type='submit']{
+.subscribe #content input[type='submit'],
+.auth #content button[type='submit'],
+.subscribe #content button[type='submit']{
     border:0;
     color:#fff;
     padding:12px 10px 10px 10px;
