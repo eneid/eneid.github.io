@@ -18,7 +18,7 @@
         </section>
         <section id="message" ng-controller="TimeLineController" ng-show="isLogged()">
             <form ng-submit="sendMessage()">
-                <textarea class="left" id="content" ng-model="content" placeholder="Saisissez votre message"></textarea>
+                <textarea class="left {{ messageStatus}}" id="content" ng-model="content" ng-click="msgCollaps()" placeholder="Saisissez votre message"></textarea>
                 <input class="right" placeholder="Envoyer" value="Envoyer" type="submit" />
             </form>
        </section>

@@ -118,6 +118,9 @@ button.disconnect.logged { display:block}
 }
 
 /**********  Time Line **********/
+.timeline #contentWrapper {
+    padding-bottom:63px;
+}
 #contentWrapper ul li {
     background-color:#ffffff;
     padding:10px 16px;
@@ -177,7 +180,7 @@ button.disconnect.logged { display:block}
     -o-transition: height 300ms ease-out;
     transition: height 300ms ease-out;
 }
-#message form textarea:focus {
+#message form textarea.msgCollaps {
     height:200px;
 }
 #message form input[type='submit'] {
@@ -190,7 +193,7 @@ button.disconnect.logged { display:block}
     color:#fff;
     border:2px solid #fff;
     cursor:pointer;
-    border-radius:3px;
+    border-radius:5px;
     -webkit-transition: background 200ms ease-out;
     -moz-transition: background 200ms ease-out;
     -ms-transition: background 200ms ease-out;
@@ -242,7 +245,7 @@ body.auth {
     border:0;
     color:#fff;
     padding:12px 10px 10px 10px;
-    width:270px;
+    width:274px;
     background-color:#c87602;
     -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
     box-shadow: 0 2px 0px 0 rgba(0,0,0,0.3);

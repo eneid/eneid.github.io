@@ -21,11 +21,16 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
     if (!!$cookies.token) {
         $scope.update();
     }
+    
+    $scope.msgCollaps = function() {
+        $scope.messageStatus = "msgCollaps";
+    }
 
     $scope.sendMessage = function () {
         new Message({contents: $scope.content}).$save();
         $scope.content = '';
         $route.reload();
+        $scope.messageStatus = "";
     }
 });
 
