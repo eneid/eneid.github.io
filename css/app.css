@@ -266,6 +266,7 @@ body.subscribe{
     background-color:#c87602;
     -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
     box-shadow: 0 2px 0px 0 rgba(0,0,0,0.3);
+    -webkit-border-radius:5px;
     border-radius:5px;
     -webkit-transition: background 200ms ease-out;
     -moz-transition: background 200ms ease-out;
