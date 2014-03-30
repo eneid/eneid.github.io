@@ -334,6 +334,7 @@ and (orientation : portrait) {
     }
     .auth h1,
     .subscribe h1{
+    margin-bottom:25px;
         width:249px;
         height:97px;
         background-size:80%;
