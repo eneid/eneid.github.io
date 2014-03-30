@@ -29,9 +29,10 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
     }
 });
 
-myApp.controller('LoggedController', function ($scope, $cookies, $location) {
+myApp.controller('LoggedController', function ($scope, $cookies, $location, $http) {
     $scope.disconnect = function () {
         delete $cookies.token;
+        delete $http.defaults.headers.common['Authorization'];
         $location.path("/auth");
     };
 
