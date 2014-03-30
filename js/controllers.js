@@ -1,10 +1,12 @@
 'use strict';
 
+var target = 'http://eneid-api.herokuapp.com/api/';
+
 myApp.factory('Message', ['$resource', function ($resource) {
-    return $resource('http://eneid-api.herokuapp.com/api/timeline');
+    return $resource(target + 'timeline');
 }]);
 myApp.factory('User', ['$resource', function ($resource) {
-    return $resource('http://eneid-api.herokuapp.com/api/users/');
+    return $resource(target + 'users');
 }]);
 
 myApp.controller('TimeLineController', function ($scope, $timeout, Message, $cookies, $route) {
@@ -16,9 +18,11 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
         $timeout($scope.update, 10000);
     };
 
-    $scope.update();
+    if (!!$cookies.token) {
+        $scope.update();
+    }
 
-    $scope.sendMessage = function() {
+    $scope.sendMessage = function () {
         new Message({contents: $scope.content}).$save();
         $scope.content = '';
         $route.reload();
@@ -27,12 +31,12 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
 
 myApp.controller('LoggedController', function ($scope, $cookies, $location) {
     $scope.disconnect = function () {
-        $cookies.token = null;
+        delete $cookies.token;
         $location.path("/auth");
     };
 
     $scope.isLogged = function () {
-        return $cookies.token !== "null";
+        return !!$cookies.token;
     };
 
     $scope.cssClasspath = function () {
@@ -42,9 +46,14 @@ myApp.controller('LoggedController', function ($scope, $cookies, $location) {
 
 myApp.controller('AuthController', function ($http, $scope, $cookies, $base64, $location) {
     $scope.auth = function (email, password) {
-        $cookies.token = $base64.encode(email + ":" + password);
-        $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
-        $location.path("/timeline");
+        var token = $base64.encode(email + ":" + password);
+        $http.get(target + "timeline", {headers: {"Authorization": "Basic " + token}}).success(function () {
+            $cookies.token = token;
+            $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
+            $location.path("/timeline");
+        }).error(function (content, error_code) {
+            console.log("error " + error_code + " during logging");
+        });
     };
 
     $scope.subscribe = function () {
