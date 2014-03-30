@@ -1,6 +1,6 @@
 'use strict';
 
-var apiBaseUrl = 'http://eneid-api.herokuapp.com/api/';
+var apiBaseUrl = 'http://localhost:8080/api/';
 
 var generateToken = function (base64, email, password) {
     console.log("Generated token for user: " + email);
@@ -22,20 +22,23 @@ myApp.factory('User', ['$resource', function ($resource) {
 }]);
 
 myApp.controller('TimeLineController', function ($scope, $timeout, Message, $cookies, $route, $http) {
-    $scope.currentTimeline = 0;
     $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
 
-    $scope.update = function () {
-        $scope.messages = Message.query();
-        $scope.currentTimeline = $scope.currentTimeline + 1;
-        var timer = $timeout($scope.update, 10000);
-        $scope.$on("$locationChangeStart", function( event ) {
-            $timeout.cancel( timer );
+    $scope.update = function (justRefresh) {
+        Message.query({}, function(data) {
+            $scope.messages = data;
         });
+
+        if (!justRefresh) {
+            var timer = $timeout($scope.update, 10000);
+            $scope.$on("$locationChangeStart", function( event ) {
+                $timeout.cancel(timer);
+            });
+        }
     };
 
     if (!!$cookies.token) {
-        $scope.update();
+        $scope.update(false);
     }
 
     $scope.msgCollaps = function() {
@@ -43,9 +46,10 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
     };
 
     $scope.sendMessage = function () {
-        new Message({contents: $scope.content}).$save();
+        new Message({contents: $scope.content}).$save(function() {
+            $scope.update(true);
+        });
         $scope.content = '';
-        $route.reload();
         $scope.messageStatus = "";
     }
 });
