@@ -62,6 +62,10 @@ body {
 .right {
     float:right;
 }
+textarea {
+    font-family: arial;
+    font-size:1em;
+}
 /********************* HEADER ********************/
 header {
     background-color:#ee8d03;
@@ -112,6 +116,8 @@ button.disconnect.logged { display:block}
     margin-top:5px;
     margin-bottom:9px;
 }
+
+/**********  Time Line **********/
 #contentWrapper ul li {
     background-color:#ffffff;
     padding:10px 16px;
@@ -142,7 +148,59 @@ button.disconnect.logged { display:block}
     padding-bottom:3px;
 }
 
-
+/**********  Box Envoi de message **********/
+#message {
+    position:fixed;
+    bottom:0;
+    padding:5px;
+    border-top:3px solid #ee8d03;
+    width:100%;
+    background-color:#3d3938;
+    text-align: center;
+}
+#message form{
+    margin:0 auto;
+    width:960px;
+    padding-top:5px;
+    padding-bottom:5px;
+    overflow:hidden;
+}
+#message form textarea {
+    border:0;
+    border-radius:5px;
+    padding:5px 10px;
+    width:820px;
+    height:30px;
+    -webkit-transition: height 300ms ease-out;
+    -moz-transition: height 300ms ease-out;
+    -ms-transition: height 300ms ease-out;
+    -o-transition: height 300ms ease-out;
+    transition: height 300ms ease-out;
+}
+#message form textarea:focus {
+    height:200px;
+}
+#message form input[type='submit'] {
+    margin:0;
+    height:40px;
+    padding:0 20px;
+    font-weight:bold;
+    font-size:16px;
+    background-color:transparent;
+    color:#fff;
+    border:2px solid #fff;
+    cursor:pointer;
+    border-radius:3px;
+    -webkit-transition: background 200ms ease-out;
+    -moz-transition: background 200ms ease-out;
+    -ms-transition: background 200ms ease-out;
+    -o-transition: background 200ms ease-out;
+    transition: background 200ms ease-out;
+}
+#message form input[type='submit']:hover {
+    color:#3d3938;
+    background-color:#fff;
+}
 
 
 /******************** Styles spécifiques Page de connexion *********************/
@@ -220,15 +278,4 @@ body.auth {
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) { ... }
 
-
-
-#message {
-    position:fixed;
-    bottom:0;
-    padding:5px;
-    border-top:5px solid pink;
-    width:100%;
-    background-color: darkred;
-    text-align: center;
-}
 
