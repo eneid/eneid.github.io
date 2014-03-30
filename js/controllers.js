@@ -53,7 +53,7 @@ myApp.controller('LoggedController', function ($scope, $cookies, $location, $htt
 myApp.controller('AuthController', function ($http, $scope, $cookies, $base64, $location) {
     $scope.auth = function (email, password) {
         var token = $base64.encode(email + ":" + password);
-        $http.get(target + "timeline", {headers: {"Authorization": "Basic " + token, "Accept": "application/json"}}).success(function () {
+        $http.get(target + "timeline", {headers: {"Authorization": "Basic " + token}}).success(function () {
             $cookies.token = token;
             $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
             $location.path("/timeline");
