@@ -66,10 +66,13 @@ myApp.controller('SubscribeController', function ($http, $scope, User, $cookies,
     $scope.subscribe = function (email, password, name, firstName) {
         console.log(email, password, name, firstName);
         var user = new User({ "email": email, "password": password, "name": name, "firstName": firstName });
-        user.$save();
-        console.log(user);
-        $cookies.token = $base64.encode(email + ":" + password);
-        $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
-        $location.path("/timeline");
+        user.$save(function () {
+            console.log(arguments);
+            $cookies.token = $base64.encode(email + ":" + password);
+            $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
+            $location.path("/timeline");
+        }, function () {
+            console.log(arguments);
+        });
     };
 });
