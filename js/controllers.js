@@ -5,13 +5,13 @@ var apiBaseUrl = 'http://eneid-api.herokuapp.com/api/';
 var generateToken = function (base64, email, password) {
     console.log("Generated token for user: " + email);
     return base64.encode(email + ":" + password);
-}
+};
 
 var logIn = function(cookies, base64, email, password, http) {
     console.log("Trying to log in user: " + email);
     cookies.token = generateToken(base64, email, password);
     http.defaults.headers.common['Authorization'] = "Basic " + cookies.token;
-}
+};
 
 myApp.factory('Message', ['$resource', function ($resource) {
     return $resource(apiBaseUrl + 'timeline');
@@ -28,7 +28,7 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
         $scope.messages = Message.query();
         $scope.currentTimeline = $scope.currentTimeline + 1;
         var timer = $timeout($scope.update, 10000);
-        $scope.$on("$destroy", function( event ) {
+        $scope.$on("$locationChangeStart", function( event ) {
             $timeout.cancel( timer );
         });
     };
@@ -39,7 +39,7 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
 
     $scope.msgCollaps = function() {
         $scope.messageStatus = "msgCollaps";
-    }
+    };
 
     $scope.sendMessage = function () {
         new Message({contents: $scope.content}).$save();
