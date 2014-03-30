@@ -231,18 +231,24 @@ body.subscribe{
 .auth form {
     margin-bottom:10px;
 }
-.auth #content [type='text'] {
-    background:#fff url(/img/user-icon.png) 7px 50% no-repeat;
+.auth #content [type='text'],
+.subscribe #content [type='text']{
+    background:#fff url(/img/user-icon.png) 8px 50% no-repeat;
 }
-.auth #content [type='password'] {
-    background:#fff url(/img/keylock-icon.png) 7px 50% no-repeat;
+.auth #content [type='email'],
+.subscribe #content [type='email']{
+    background:#fff url(/img/email-icon.png) 8px 50% no-repeat;
+}
+.auth #content [type='password'],
+.subscribe #content [type='password']{
+    background:#fff url(/img/keylock-icon.png) 8px 50% no-repeat;
 }
 .auth #content [type='text'],
 .auth #content [type='password'],
 .auth #content [type='email'],
 .subscribe #content [type='text'],
 .subscribe #content [type='password'],
-subscribe #content [type='email']{
+.subscribe #content [type='email']{
     border:0;
     width:230px;
     padding:10px 10px 10px 35px;
@@ -251,7 +257,8 @@ subscribe #content [type='email']{
     background-size:auto;
 }
 
-.auth #content input[type='submit'] {
+.auth #content input[type='submit'],
+.subscribe #content input[type='submit']{
     border:0;
     color:#fff;
     padding:12px 10px 10px 10px;
@@ -277,63 +284,13 @@ subscribe #content [type='email']{
 }
 
 
-
-/* Extra small devices (phones, less than 768px) */
-/* No media query since this is the default in Bootstrap */
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) { ... }
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) { ... }
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min) { ... }
-
-
-
-
 /*********************** Animations CSS  *********************/
-.anim1 {
+.anim {
     -webkit-animation: fadein 3s; /* Safari and Chrome */
     -moz-animation: fadein 3s; /* Firefox */
     -ms-animation: fadein 3s; /* Internet Explorer */
     -o-animation: fadein 3s; /* Opera */
     animation: fadein 3s;
-}
-.anim2 {
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -moz-animation: fadein 2s; /* Firefox */
-    -ms-animation: fadein 2s; /* Internet Explorer */
-    -o-animation: fadein 2s /* Opera */
-    animation: fadein 2s;
-}
-.anim3 {
-    transition-delay: 1s;
-    -webkit-transition-delay: 1s; /* Safari */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -moz-animation: fadein 2s; /* Firefox */
-    -ms-animation: fadein 2s; /* Internet Explorer */
-    -o-animation: fadein 2s /* Opera */
-    animation: fadein 2s;
-}
-.anim4 {
-    transition-delay: 1s;
-    -webkit-transition-delay: 1s; /* Safari */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -moz-animation: fadein 2s; /* Firefox */
-    -ms-animation: fadein 2s; /* Internet Explorer */
-    -o-animation: fadein 2s /* Opera */
-    animation: fadein 2s;
-}
-.anim5 {
-    transition-delay: 1s;
-    -webkit-transition-delay: 1s; /* Safari */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -moz-animation: fadein 2s; /* Firefox */
-    -ms-animation: fadein 2s; /* Internet Explorer */
-    -o-animation: fadein 2s /* Opera */
-    animation: fadein 2s;
 }
 @keyframes fadein {
     from { opacity: 0; }
@@ -363,3 +320,19 @@ subscribe #content [type='email']{
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
+
+
+/*********************** CSS Responsive  *********************/
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { ... }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { ... }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { ... }
+
