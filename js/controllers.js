@@ -2,6 +2,17 @@
 
 var apiBaseUrl = 'http://eneid-api.herokuapp.com/api/';
 
+var generateToken = function (base64, email, password) {
+    console.log("Generated token for user: " + email);
+    return base64.encode(email + ":" + password);
+}
+
+var logIn = function(cookies, base64, email, password, http) {
+    console.log("Trying to log in user: " + email);
+    cookies.token = generateToken(base64, email, password);
+    http.defaults.headers.common['Authorization'] = "Basic " + cookies.token;
+}
+
 myApp.factory('Message', ['$resource', function ($resource) {
     return $resource(apiBaseUrl + 'timeline');
 }]);
@@ -53,14 +64,12 @@ myApp.controller('LoggedController', function ($scope, $cookies, $location, $htt
         return $location.path().substring(1);
     }
 });
-
 myApp.controller('AuthController', function ($http, $scope, $cookies, $base64, $location) {
     $scope.auth = function (email, password) {
         $http.get(apiBaseUrl + "login", {
             params: { login: email, password: password }
         }).success(function () {
-            $cookies.token = $base64.encode(email + ":" + password);
-            $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
+            logIn($cookies, $base64, email, password, $http);
             $location.path("/timeline");
         }).error(function (content, error_code) {
             console.log("error " + error_code + " during login: " + content);
@@ -71,14 +80,11 @@ myApp.controller('AuthController', function ($http, $scope, $cookies, $base64, $
         $location.path("/subscribe");
     }
 });
-
 myApp.controller('SubscribeController', function ($http, $scope, User, $cookies, $base64, $location) {
     $scope.subscribe = function (email, password, name, firstName) {
         new User({ "email": email, "password": password, "name": name, "firstName": firstName })
             .$save(function () {
-                console.log(arguments);
-                $cookies.token = $base64.encode(email + ":" + password);
-                $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
+                logIn($cookies, $base64, email, password, $http);
                 $location.path("/timeline");
             }, function () {
                 console.log(arguments);
