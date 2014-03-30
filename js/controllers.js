@@ -58,7 +58,7 @@ myApp.controller('AuthController', function ($http, $scope, $cookies, $base64, $
             $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
             $location.path("/timeline");
         }).error(function (content, error_code) {
-            console.log("error " + error_code + " during logging");
+            console.log("error " + error_code + " during login: " + content);
         });
     };
 
