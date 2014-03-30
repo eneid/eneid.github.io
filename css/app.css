@@ -45,6 +45,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+a, a:hover, button, input[type='submit'] {
+    cursor:pointer;
+}
 
 
 
@@ -89,7 +92,6 @@ header button {
     border:0;
     padding:8px 10px 7px 10px;
     margin-top:5px;
-    cursor:pointer;
     border-radius:3px;
     -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
@@ -192,7 +194,6 @@ button.disconnect.logged { display:block}
     background-color:transparent;
     color:#fff;
     border:2px solid #fff;
-    cursor:pointer;
     border-radius:5px;
     -webkit-transition: background 200ms ease-out;
     -moz-transition: background 200ms ease-out;
@@ -206,21 +207,25 @@ button.disconnect.logged { display:block}
 }
 
 
-/******************** Styles spécifiques Page de connexion *********************/
-body.auth {
+/******************** Styles spécifiques Page de connexion / souscription *********************/
+body.auth,
+body.subscribe{
     background-color:#ee8d03;
 }
-.auth #contentWrapper {
+.auth #contentWrapper,
+.subscribe #contentWrapper{
     margin-top:11%;
 }
-.auth h1 {
+.auth h1,
+.subscribe h1{
     background:url(/img/logo-eneid-tall.png) top left no-repeat;
     width:249px;
     height:97px;
     text-indent:-9999px;
     margin:0 auto 50px auto;
 }
-.auth #content {
+.auth #content,
+.subscribe #content{
     text-align:center;
 }
 .auth form {
@@ -233,7 +238,11 @@ body.auth {
     background:#fff url(/img/keylock-icon.png) 7px 50% no-repeat;
 }
 .auth #content [type='text'],
-.auth #content [type='password']{
+.auth #content [type='password'],
+.auth #content [type='email'],
+.subscribe #content [type='text'],
+.subscribe #content [type='password'],
+subscribe #content [type='email']{
     border:0;
     width:230px;
     padding:10px 10px 10px 35px;
@@ -241,6 +250,7 @@ body.auth {
     margin-bottom:15px;
     background-size:auto;
 }
+
 .auth #content input[type='submit'] {
     border:0;
     color:#fff;
@@ -258,7 +268,6 @@ body.auth {
 }
 .auth #content input[type='submit']:hover {
     background-color:#e18400;
-    cursor:pointer;
 }
 .auth .createAccount {
     color:#fff;
@@ -282,3 +291,75 @@ body.auth {
 @media (min-width: @screen-lg-min) { ... }
 
 
+
+
+/*********************** Animations CSS  *********************/
+.anim1 {
+    -webkit-animation: fadein 3s; /* Safari and Chrome */
+    -moz-animation: fadein 3s; /* Firefox */
+    -ms-animation: fadein 3s; /* Internet Explorer */
+    -o-animation: fadein 3s; /* Opera */
+    animation: fadein 3s;
+}
+.anim2 {
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -moz-animation: fadein 2s; /* Firefox */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s /* Opera */
+    animation: fadein 2s;
+}
+.anim3 {
+    transition-delay: 1s;
+    -webkit-transition-delay: 1s; /* Safari */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -moz-animation: fadein 2s; /* Firefox */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s /* Opera */
+    animation: fadein 2s;
+}
+.anim4 {
+    transition-delay: 1s;
+    -webkit-transition-delay: 1s; /* Safari */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -moz-animation: fadein 2s; /* Firefox */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s /* Opera */
+    animation: fadein 2s;
+}
+.anim5 {
+    transition-delay: 1s;
+    -webkit-transition-delay: 1s; /* Safari */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -moz-animation: fadein 2s; /* Firefox */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s /* Opera */
+    animation: fadein 2s;
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
