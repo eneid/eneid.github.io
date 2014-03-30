@@ -1,12 +1,12 @@
 'use strict';
 
-var target = 'http://eneid-api.herokuapp.com/api/';
+var apiBaseUrl = 'http://eneid-api.herokuapp.com/api/';
 
 myApp.factory('Message', ['$resource', function ($resource) {
-    return $resource(target + 'timeline');
+    return $resource(apiBaseUrl + 'timeline');
 }]);
 myApp.factory('User', ['$resource', function ($resource) {
-    return $resource(target + 'users');
+    return $resource(apiBaseUrl + 'users');
 }]);
 
 myApp.controller('TimeLineController', function ($scope, $timeout, Message, $cookies, $route) {
@@ -52,9 +52,10 @@ myApp.controller('LoggedController', function ($scope, $cookies, $location, $htt
 
 myApp.controller('AuthController', function ($http, $scope, $cookies, $base64, $location) {
     $scope.auth = function (email, password) {
-        var token = $base64.encode(email + ":" + password);
-        $http.get(target + "timeline", {headers: {"Authorization": "Basic " + token}}).success(function () {
-            $cookies.token = token;
+        $http.get(apiBaseUrl + "login", {
+            params: { login: email, password: password }
+        }).success(function () {
+            $cookies.token = $base64.encode(email + ":" + password);
             $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
             $location.path("/timeline");
         }).error(function (content, error_code) {
