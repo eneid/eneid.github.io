@@ -5,6 +5,7 @@ var apiBaseUrl = 'http://eneid-api.herokuapp.com/api/';
 myApp.factory('Message', ['$resource', function ($resource) {
     return $resource(apiBaseUrl + 'timeline');
 }]);
+
 myApp.factory('User', ['$resource', function ($resource) {
     return $resource(apiBaseUrl + 'users');
 }]);
@@ -15,13 +16,16 @@ myApp.controller('TimeLineController', function ($scope, $timeout, Message, $coo
     $scope.update = function () {
         $scope.messages = Message.query();
         $scope.currentTimeline = $scope.currentTimeline + 1;
-        $timeout($scope.update, 10000);
+        var timer = $timeout($scope.update, 10000);
+        $scope.$on("$destroy", function( event ) {
+            $timeout.cancel( timer );
+        });
     };
 
     if (!!$cookies.token) {
         $scope.update();
     }
-    
+
     $scope.msgCollaps = function() {
         $scope.messageStatus = "msgCollaps";
     }
@@ -70,15 +74,15 @@ myApp.controller('AuthController', function ($http, $scope, $cookies, $base64, $
 
 myApp.controller('SubscribeController', function ($http, $scope, User, $cookies, $base64, $location) {
     $scope.subscribe = function (email, password, name, firstName) {
-        console.log(email, password, name, firstName);
-        var user = new User({ "email": email, "password": password, "name": name, "firstName": firstName });
-        user.$save(function () {
-            console.log(arguments);
-            $cookies.token = $base64.encode(email + ":" + password);
-            $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
-            $location.path("/timeline");
-        }, function () {
-            console.log(arguments);
-        });
+        new User({ "email": email, "password": password, "name": name, "firstName": firstName })
+            .$save(function () {
+                console.log(arguments);
+                $cookies.token = $base64.encode(email + ":" + password);
+                $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
+                $location.path("/timeline");
+            }, function () {
+                console.log(arguments);
+            })
+        ;
     };
 });
