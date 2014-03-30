@@ -1,6 +1,6 @@
 'use strict';
 
-var apiBaseUrl = 'http://localhost:8080/api/';
+var apiBaseUrl = 'http://eneid-api.herokuapp.com/api/';
 
 var generateToken = function (base64, email, password) {
     console.log("Generated token for user: " + email);
