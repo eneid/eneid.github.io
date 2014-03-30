@@ -329,8 +329,16 @@ and (min-device-width : 320px)
 and (max-device-width : 568px) 
 and (orientation : portrait) {
     .wrap {
-    width:100%;
-    margin:0 auto;
+        width:100%;
+        margin:0 auto;
+    }
+    .auth h1,
+    .subscribe h1{
+        width:249px;
+        height:97px;
+        background-size:80%;
+    }
+    
 }
 
 
