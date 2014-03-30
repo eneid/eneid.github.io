@@ -21,8 +21,9 @@ myApp.factory('User', ['$resource', function ($resource) {
     return $resource(apiBaseUrl + 'users');
 }]);
 
-myApp.controller('TimeLineController', function ($scope, $timeout, Message, $cookies, $route) {
+myApp.controller('TimeLineController', function ($scope, $timeout, Message, $cookies, $route, $http) {
     $scope.currentTimeline = 0;
+    $http.defaults.headers.common['Authorization'] = "Basic " + $cookies.token;
 
     $scope.update = function () {
         $scope.messages = Message.query();
